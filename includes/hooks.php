@@ -19,6 +19,10 @@ add_action(
 	__NAMESPACE__ . '\register_plugin_assets'
 );
 
+add_action(
+	'wp_enqueue_scripts',
+	__NAMESPACE__ . '\enqueue_plugin_assets'
+);
 
 add_action(
 	'admin_notices',

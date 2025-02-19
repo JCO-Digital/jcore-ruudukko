@@ -8,20 +8,13 @@
   "icon": "grid-view",
   "description": "Jcore Grid",
   "attributes": {
-    "columns": {
-      "type": "number",
-      "default": 2
-    },
     "blockType": {
       "type": "string",
       "default": "grid"
     },
-    "static": {
-      "type": "string",
-      "source": "attribute",
-      "selector": "section",
-      "attribute": "data-static",
-      "default": ""
+    "columns": {
+      "type": "number",
+      "default": 2
     },
     "preview": {
       "type": "boolean",
@@ -31,6 +24,14 @@
   "example": {},
   "supports": {
     "align": ["wide", "full"],
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "background": true,
+      "text": false
+    },
     "html": false
   },
   "textdomain": "jcore-grid",

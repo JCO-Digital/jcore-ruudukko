@@ -1,0 +1,10 @@
+.wp-block-jcore-grid {
+  --jcore-column-min: 240px;
+  &.columns {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--jcore-column-min), 100%), 1fr)
+    );
+  }
+}

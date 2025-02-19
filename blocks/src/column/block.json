@@ -7,10 +7,23 @@
   "category": "widgets",
   "icon": "editor-justify",
   "description": "Jcore Column",
-  "attributes": {},
+  "attributes": {
+    "span": {
+      "type": "number",
+      "default": 1
+    }
+  },
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
+    "color": {
+      "background": true,
+      "text": false
+    }
   },
   "parent": ["jcore/grid"],
   "textdomain": "jcore-grid",

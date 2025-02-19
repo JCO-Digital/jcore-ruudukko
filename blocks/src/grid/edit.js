@@ -5,7 +5,8 @@ import {
   InspectorControls,
   useBlockProps,
 } from "@wordpress/block-editor";
-import { PanelBody, RangeControl } from "@wordpress/components";
+import { ColorPalette, PanelBody, RangeControl } from "@wordpress/components";
+import { useSelect } from "@wordpress/data";
 
 import "./editor.scss";
 
@@ -18,16 +19,7 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function edit({ attributes, setAttributes, context }) {
-  const { columns, blockType } = attributes;
-
-  const cols = [];
-  for (let i = 0; i < columns; i++) {
-    cols.push(
-      <div key={i} className="column">
-        <InnerBlocks />
-      </div>,
-    );
-  }
+  const { blockType, columns } = attributes;
 
   return (
     <>

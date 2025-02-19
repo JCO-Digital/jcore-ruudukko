@@ -14,4 +14,12 @@ namespace Jcore\Grid;
  * @return void
  */
 function register_plugin_assets(): void {
+	style_register(
+		'jcore-grid',
+		'dist/css/index.css',
+	);
+}
+
+function enqueue_plugin_assets(): void {
+	wp_enqueue_style( 'jcore-grid' );
 }

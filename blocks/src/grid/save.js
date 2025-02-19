@@ -12,10 +12,12 @@ import { InnerBlocks } from "@wordpress/block-editor";
  */
 export default function save({ attributes }) {
   return (
-    <section {...useBlockProps.save()}>
-      <div className={"columns columns-" + attributes.columns}>
-        <InnerBlocks.Content />
-      </div>
+    <section
+      {...useBlockProps.save({
+        className: "columns columns-" + attributes.columns,
+      })}
+    >
+      <InnerBlocks.Content />
     </section>
   );
 }
