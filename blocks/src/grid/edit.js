@@ -5,10 +5,16 @@ import {
   InspectorControls,
   useBlockProps,
 } from "@wordpress/block-editor";
-import { ColorPalette, PanelBody, RangeControl } from "@wordpress/components";
-import { useSelect } from "@wordpress/data";
+import {
+  PanelBody,
+  ToggleControl,
+  RangeControl,
+  TextControl,
+  SelectControl,
+} from "@wordpress/components";
 
 import "./editor.scss";
+import { generateBlockProps } from "./utils";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -19,31 +25,75 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function edit({ attributes, setAttributes, context }) {
-  const { blockType, columns } = attributes;
+  const { blockType, autoSize, minSize } = attributes;
 
-  return (
-    <>
-      <InspectorControls>
-        <PanelBody title={__("Settings", "jcore")}>
+  function updateBreakpoints(bp, col) {
+    console.debug(bp, col);
+  }
+
+  const breakpointsValues = [
+    { label: "Small", value: "sm" },
+    { label: "Medium", value: "md" },
+    { label: "Large", value: "lg" },
+    { label: "Extra Large", value: "xl" },
+  ];
+
+  const bpBlocks = [];
+  breakpointsValues.forEach((bp) => {
+    const columns = attributes.breakpoints[bp.value];
+    bpBlocks.push(
+      <div key={bp.value}>
+        <ToggleControl
+          __nextHasNoMarginBottom
+          label={bp.label}
+          checked={!!columns}
+          onChange={(newValue) => console.debug(newValue)}
+        />
+        {columns && (
           <RangeControl
             __nextHasNoMarginBottom
             __next40pxDefaultSize
             label="Columns"
             value={columns}
-            onChange={(newValue) =>
-              setAttributes({ columns: Number(newValue) })
-            }
+            onChange={(newColumns) => updateBreakpoints(bp, newColumns)}
             min={1}
             max={6}
           />
+        )}
+      </div>,
+    );
+  });
+
+  return (
+    <>
+      <InspectorControls>
+        <PanelBody title={__("Settings")}>
+          <ToggleControl
+            __nextHasNoMarginBottom
+            label={__("Auto Columns")}
+            help={
+              autoSize
+                ? __("Set columns by size.")
+                : __("Define column number by breakpoints.")
+            }
+            checked={autoSize}
+            onChange={(newValue) => setAttributes({ autoSize: newValue })}
+          />
+          {autoSize && (
+            <TextControl
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize
+              label="Minimum Column Width"
+              placeholder="360px"
+              value={minSize}
+              onChange={(newValue) => setAttributes({ minSize: newValue })}
+            />
+          )}
+          {autoSize || bpBlocks}
         </PanelBody>
       </InspectorControls>
 
-      <div
-        {...useBlockProps({
-          className: "columns-" + columns + " blocktype-" + blockType,
-        })}
-      >
+      <div {...useBlockProps(generateBlockProps(attributes))}>
         <InnerBlocks
           orientation="horizontal"
           allowedBlocks={["jcore/column"]}

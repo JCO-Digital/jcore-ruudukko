@@ -12,6 +12,18 @@
       "type": "string",
       "default": "grid"
     },
+    "autoSize": {
+      "type": "boolean",
+      "default": true
+    },
+    "minSize": {
+      "type": "string",
+      "default": ""
+    },
+    "breakpoints": {
+      "type": "object",
+      "default": { "md": 2 }
+    },
     "columns": {
       "type": "number",
       "default": 2

@@ -1,5 +1,6 @@
 import { useBlockProps } from "@wordpress/block-editor";
 import { InnerBlocks } from "@wordpress/block-editor";
+import { generateBlockProps, generateClassName } from "./utils";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -12,11 +13,7 @@ import { InnerBlocks } from "@wordpress/block-editor";
  */
 export default function save({ attributes }) {
   return (
-    <section
-      {...useBlockProps.save({
-        className: "columns columns-" + attributes.columns,
-      })}
-    >
+    <section {...useBlockProps.save(generateBlockProps(attributes))}>
       <InnerBlocks.Content />
     </section>
   );
