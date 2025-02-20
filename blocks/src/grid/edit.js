@@ -10,7 +10,6 @@ import {
   ToggleControl,
   RangeControl,
   TextControl,
-  SelectControl,
 } from "@wordpress/components";
 
 import "./editor.scss";
@@ -25,10 +24,17 @@ import { generateBlockProps } from "./utils";
  * @return {Element} Element to render.
  */
 export default function edit({ attributes, setAttributes, context }) {
-  const { blockType, autoSize, minSize } = attributes;
+  const { autoSize, minSize } = attributes;
+
+  const bps = { ...attributes.breakpoints };
 
   function updateBreakpoints(bp, col) {
-    console.debug(bp, col);
+    if (col) {
+      bps[bp] = col;
+    } else {
+      bps[bp] = undefined;
+    }
+    setAttributes({ breakpoints: bps });
   }
 
   const breakpointsValues = [
@@ -42,12 +48,12 @@ export default function edit({ attributes, setAttributes, context }) {
   breakpointsValues.forEach((bp) => {
     const columns = attributes.breakpoints[bp.value];
     bpBlocks.push(
-      <div key={bp.value}>
+      <section className="breakpoint" key={bp.value}>
         <ToggleControl
           __nextHasNoMarginBottom
           label={bp.label}
-          checked={!!columns}
-          onChange={(newValue) => console.debug(newValue)}
+          checked={columns}
+          onChange={(newValue) => updateBreakpoints(bp.value, newValue ? 2 : 0)}
         />
         {columns && (
           <RangeControl
@@ -55,12 +61,12 @@ export default function edit({ attributes, setAttributes, context }) {
             __next40pxDefaultSize
             label="Columns"
             value={columns}
-            onChange={(newColumns) => updateBreakpoints(bp, newColumns)}
+            onChange={(newColumns) => updateBreakpoints(bp.value, newColumns)}
             min={1}
             max={6}
           />
         )}
-      </div>,
+      </section>,
     );
   });
 

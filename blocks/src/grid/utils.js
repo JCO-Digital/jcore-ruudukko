@@ -10,7 +10,11 @@ export function generateBlockProps(attributes) {
       break;
   }
   if (!attributes.autoSize) {
-    classList.push(`columns-${attributes.columns}`);
+    Object.keys(attributes.breakpoints).forEach((bp) => {
+      const value = attributes.breakpoints[bp];
+      console.debug(bp, value);
+      classList.push(`columns-${bp}-${value}`);
+    });
   }
   if (attributes.minSize) {
     style["--jcore-column-min"] = attributes.minSize;

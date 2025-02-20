@@ -24,10 +24,6 @@
       "type": "object",
       "default": { "md": 2 }
     },
-    "columns": {
-      "type": "number",
-      "default": 2
-    },
     "preview": {
       "type": "boolean",
       "default": false
