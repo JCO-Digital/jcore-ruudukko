@@ -13,7 +13,8 @@ import {
 } from "@wordpress/components";
 
 import "./editor.scss";
-import { generateBlockProps } from "./utils";
+import { generateGridProps } from "../utils";
+import { breakpointsValues } from "../constants";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,13 +37,6 @@ export default function edit({ attributes, setAttributes, context }) {
     }
     setAttributes({ breakpoints: bps });
   }
-
-  const breakpointsValues = [
-    { label: "Small", value: "sm" },
-    { label: "Medium", value: "md" },
-    { label: "Large", value: "lg" },
-    { label: "Extra Large", value: "xl" },
-  ];
 
   const bpBlocks = [];
   breakpointsValues.forEach((bp) => {
@@ -99,7 +93,7 @@ export default function edit({ attributes, setAttributes, context }) {
         </PanelBody>
       </InspectorControls>
 
-      <div {...useBlockProps(generateBlockProps(attributes))}>
+      <div {...useBlockProps(generateGridProps(attributes))}>
         <InnerBlocks
           orientation="horizontal"
           allowedBlocks={["jcore/column"]}

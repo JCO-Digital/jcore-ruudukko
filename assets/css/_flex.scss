@@ -1,0 +1,28 @@
+.jflex {
+  display: flex;
+  flex-wrap: wrap;
+  &.center {
+    justify-content: center;
+  }
+  > div {
+    min-width: min(var(--jcore-column-min), 100%);
+  }
+  @for $i from 1 through 6 {
+    &.columns-#{$i} > div,
+    &.columns-xs-#{$i} > div {
+      width: calc(100% / $i);
+      min-width: unset;
+    }
+  }
+  @each $bp, $width in $breakpoints {
+    @media (width >= $width) {
+      @for $i from 1 through 6 {
+        &.columns-#{$bp}-#{$i} > div {
+          width: calc(100% / $i);
+          min-width: unset;
+          flex-grow: 0;
+        }
+      }
+    }
+  }
+}

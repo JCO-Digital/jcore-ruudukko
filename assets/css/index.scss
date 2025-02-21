@@ -1,17 +1,9 @@
+@import "breakpoints";
+@import "grid";
+@import "flex";
+
 :root {
   --jcore-column-min: 360px;
-}
-.jgrid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(var(--jcore-column-min), 100%), 1fr)
-  );
-  @for $i from 1 through 6 {
-    &.columns-#{$i} {
-      grid-template-columns: repeat($i, 1fr);
-    }
-  }
 }
 .jflex {
   display: flex;

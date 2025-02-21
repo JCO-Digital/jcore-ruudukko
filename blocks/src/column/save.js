@@ -1,5 +1,6 @@
 import { useBlockProps } from "@wordpress/block-editor";
 import { InnerBlocks } from "@wordpress/block-editor";
+import { generateColumnProps } from "../utils";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -12,7 +13,7 @@ import { InnerBlocks } from "@wordpress/block-editor";
  */
 export default function save({ attributes }) {
   return (
-    <div {...useBlockProps.save()}>
+    <div {...useBlockProps.save(generateColumnProps(attributes))}>
       <InnerBlocks.Content />
     </div>
   );

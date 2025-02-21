@@ -22,7 +22,7 @@
     },
     "breakpoints": {
       "type": "object",
-      "default": { "md": 2 }
+      "default": { "xs": 1, "md": 2 }
     },
     "preview": {
       "type": "boolean",
@@ -35,6 +35,10 @@
     "background": {
       "backgroundImage": true,
       "backgroundSize": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
     },
     "color": {
       "background": true,

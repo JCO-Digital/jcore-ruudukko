@@ -1,0 +1,36 @@
+.jgrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--jcore-column-min), 100%), 1fr)
+  );
+  @for $i from 1 through 6 {
+    &.columns-#{$i},
+    &.columns-xs-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+  @each $bp, $width in $breakpoints {
+    @media (width >= $width) {
+      @for $i from 1 through 6 {
+        &.columns-#{$bp}-#{$i} {
+          grid-template-columns: repeat($i, 1fr);
+        }
+      }
+    }
+  }
+  @for $i from 2 through 6 {
+    .span-#{$i} {
+      grid-column-start: span $i;
+    }
+  }
+  @each $bp, $width in $breakpoints {
+    @media (width >= $width) {
+      @for $i from 2 through 6 {
+        .span-#{$bp}-#{$i} {
+          grid-column-start: span $i;
+        }
+      }
+    }
+  }
+}

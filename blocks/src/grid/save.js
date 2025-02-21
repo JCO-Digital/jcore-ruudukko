@@ -1,6 +1,6 @@
 import { useBlockProps } from "@wordpress/block-editor";
 import { InnerBlocks } from "@wordpress/block-editor";
-import { generateBlockProps, generateClassName } from "./utils";
+import { generateGridProps } from "../utils";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -13,7 +13,7 @@ import { generateBlockProps, generateClassName } from "./utils";
  */
 export default function save({ attributes }) {
   return (
-    <section {...useBlockProps.save(generateBlockProps(attributes))}>
+    <section {...useBlockProps.save(generateGridProps(attributes))}>
       <InnerBlocks.Content />
     </section>
   );

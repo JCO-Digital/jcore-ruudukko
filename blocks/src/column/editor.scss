@@ -1,5 +1,23 @@
+@use "../../../assets/css/breakpoints" as *;
+
 .wp-block-jcore-column {
   background-color: rgba(100, 100, 100, 0.1);
   min-height: 100px;
   padding: 0.5rem;
+}
+.jgrid {
+  @for $i from 2 through 6 {
+    .span-#{$i} {
+      grid-column-start: span $i;
+    }
+  }
+  @each $bp, $width in $breakpoints {
+    @media (width >= $width) {
+      @for $i from 2 through 6 {
+        .span-#{$bp}-#{$i} {
+          grid-column-start: span $i;
+        }
+      }
+    }
+  }
 }
