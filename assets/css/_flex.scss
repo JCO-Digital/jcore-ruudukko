@@ -20,9 +20,13 @@
         &.columns-#{$bp}-#{$i} > div {
           width: calc(100% / $i);
           min-width: unset;
-          flex-grow: 0;
         }
       }
+    }
+  }
+  @for $i from 2 through 6 {
+    &.span-#{$i} {
+      width: calc(100% / $i);
     }
   }
 }

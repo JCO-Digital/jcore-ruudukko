@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v2
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Setup PHP with tools
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer:2
+
+      - name: Make
+        run: make release
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: git@github.com:jco-digital/jcore-grid-dist.git
+          BRANCH: main
+          FOLDER: plugin
+          SSH_PRIVATE_KEY: ${{ secrets.DIST_DEPLOY_KEY }}

@@ -20,7 +20,7 @@ build-release: install-release
 	@echo "🛠️❗ Building a release of the project"
 	@pnpm project:build
 
-.PHONY: build-release
+.PHONY: release
 release: build-release
 	@echo "✅❗ Bundling a release of the project"
 	@pnpm plugin:tasks
