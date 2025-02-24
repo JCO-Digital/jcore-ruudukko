@@ -1,6 +1,6 @@
 === JCORE Grid ===
 
-Contributors: [jcodigital](https://profiles.wordpress.org/jcodigital/)
+Contributors: https://profiles.wordpress.org/jcodigital/
 Donate link: -
 Tags: layout, grid, flex
 Requires at least: 6.0
