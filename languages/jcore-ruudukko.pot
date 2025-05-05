@@ -28,11 +28,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/notices.php:20 plugin/includes/notices.php:20
-#. translators: 1: Url to the options page.
-msgid "Test error"
-msgstr ""
-
 #. Plugin Name of the plugin/theme
 msgid "JCORE Ruudukko"
 msgstr ""
