@@ -14,8 +14,6 @@
 
 namespace Jcore\Ruudukko;
 
-require_once __DIR__ . '/vendor/autoload.php';
-
 // Constants for the plugin.
 require_once __DIR__ . '/consts.php';
 
