@@ -2,10 +2,10 @@
 /**
  * Handles notices.
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 /**
  * Handles notices.
@@ -19,9 +19,9 @@ function handle_notices(): void {
 			// translators: 1: Url to the options page.
 				__(
 					'Test error',
-					'jcore-grid'
+					'jcore-ruudukko'
 				),
-				admin_url( 'admin.php?page=jcore-grid-settings&tab=general' )
+				admin_url( 'admin.php?page=jcore-ruudukko-settings&tab=general' )
 			),
 			array(
 				'type' => 'error',

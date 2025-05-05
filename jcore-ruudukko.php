@@ -1,18 +1,18 @@
 <?php
 /**
- * Plugin Name: JCORE Grid
- * Plugin URI: https://github.com/jco-digital/jcore-grid
- * Description: Grid
+ * Plugin Name: JCORE Ruudukko
+ * Plugin URI: https://github.com/jco-digital/jcore-ruudukko
+ * Description: Grid and Flex blocks for layout use in Gutenberg.
  * Version: 0.1.0
- * Author: J&Co Digital Oy
+ * Author: J&Co Digital
  * Author URI: https://jco.fi
  * Domain Path: /languages
- * Text Domain: jcore-grid
+ * Text Domain: jcore-ruudukko
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 require_once __DIR__ . '/vendor/autoload.php';
 

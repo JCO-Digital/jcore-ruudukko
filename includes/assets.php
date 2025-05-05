@@ -2,10 +2,10 @@
 /**
  * Registers the assets for the plugin.
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 /**
  * Handles registering the plugin styles and scripts.
@@ -15,11 +15,11 @@ namespace Jcore\Grid;
  */
 function register_plugin_assets(): void {
 	style_register(
-		'jcore-grid',
+		'jcore-ruudukko',
 		'dist/css/index.css',
 	);
 }
 
 function enqueue_plugin_assets(): void {
-	wp_enqueue_style( 'jcore-grid' );
+	wp_enqueue_style( 'jcore-ruudukko' );
 }

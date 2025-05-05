@@ -2,10 +2,10 @@
 /**
  * Helper functions for the plugin.
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 /**
  * Register script wrapper.
@@ -63,8 +63,8 @@ function get_file_info( string $file, string $version = '' ): array|bool {
 		$version .= '-';
 	}
 	$location = array(
-		'path' => join_path( JCORE_GRID_PLUGIN_PATH, $file ),
-		'uri'  => join_path( JCORE_GRID_PLUGIN_URI, $file ),
+		'path' => join_path( JCORE_RUUDUKKO_PLUGIN_PATH, $file ),
+		'uri'  => join_path( JCORE_RUUDUKKO_PLUGIN_URI, $file ),
 	);
 	if ( file_exists( $location['path'] ) ) {
 		$version .= filemtime( $location['path'] );
@@ -103,7 +103,7 @@ function join_path( string $path, string ...$parts ): string {
  * @return string
  */
 function render_template( string $template, array $data = array() ): string {
-	$final_path = sprintf( '%s/views/%s.php', untrailingslashit( JCORE_GRID_PLUGIN_PATH ), $template );
+	$final_path = sprintf( '%s/views/%s.php', untrailingslashit( JCORE_RUUDUKKO_PLUGIN_PATH ), $template );
 	if ( ! file_exists( $final_path ) ) {
 		return '';
 	}

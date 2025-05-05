@@ -2,10 +2,10 @@
 /**
  * Constants for the plugin.
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
-define( 'JCORE_GRID_PLUGIN_PATH', __DIR__ );
-define( 'JCORE_GRID_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
+define( 'JCORE_RUUDUKKO_PLUGIN_PATH', __DIR__ );
+define( 'JCORE_RUUDUKKO_PLUGIN_URI', plugin_dir_url( __FILE__ ) );

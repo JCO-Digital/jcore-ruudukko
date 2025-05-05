@@ -45,7 +45,7 @@ module.exports = function (grunt) {
 
     addtextdomain: {
       options: {
-        textdomain: "jcore-grid",
+        textdomain: "jcore-ruudukko",
       },
       update_all_domains: {
         options: {
@@ -84,8 +84,8 @@ module.exports = function (grunt) {
             "vendor/*",
             "vendor-prefixed/*",
           ],
-          mainFile: "jcore-grid.php",
-          potFilename: "jcore-grid.pot",
+          mainFile: "jcore-ruudukko.php",
+          potFilename: "jcore-ruudukko.pot",
           potHeaders: {
             poedit: true,
             "x-poedit-keywordslist": true,
@@ -108,7 +108,7 @@ module.exports = function (grunt) {
           return filepath;
         },
         src: ["**/*"],
-        dest: "build/jcore-grid.zip",
+        dest: "build/jcore-ruudukko.zip",
       },
     },
 

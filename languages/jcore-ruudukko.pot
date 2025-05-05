@@ -1,9 +1,9 @@
 # Copyright (C) 2025 J&Co Digital Oy
-# This file is distributed under the same license as the JCORE Grid package.
+# This file is distributed under the same license as the JCORE Ruudukko package.
 msgid ""
 msgstr ""
-"Project-Id-Version: JCORE Grid 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jcore-grid\n"
+"Project-Id-Version: JCORE Ruudukko 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jcore-ruudukko\n"
 "POT-Creation-Date: 2025-02-24 05:39:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -34,15 +34,15 @@ msgid "Test error"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "JCORE Grid"
+msgid "JCORE Ruudukko"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/jco-digital/jcore-grid"
+msgid "https://github.com/jco-digital/jcore-ruudukko"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Grid"
+msgid "Grid and Flex blocks for layout use in Gutenberg."
 msgstr ""
 
 #. Author of the plugin/theme

@@ -2,10 +2,10 @@
 /**
  * Hooks for the plugin.
  *
- * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 // Initializes all classes.
 add_action(
@@ -29,7 +29,7 @@ add_action(
 	__NAMESPACE__ . '\handle_notices'
 );
 
-add_filter( 'plugin_action_links_jcore-grid/jcore-grid.php', __NAMESPACE__ . '\settings_link' );
+add_filter( 'plugin_action_links_jcore-ruudukko/jcore-ruudukko.php', __NAMESPACE__ . '\settings_link' );
 /**
  * Add settings link to plugin listing.
  *
@@ -41,12 +41,12 @@ function settings_link( $links ) {
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'jcore-grid-settings',
+			'jcore-ruudukko-settings',
 			get_admin_url() . 'admin.php'
 		)
 	);
 	// Create the link.
-	$settings_link = "<a href='$url'>" . __( 'Settings', 'jcore-grid' ) . '</a>';
+	$settings_link = "<a href='$url'>" . __( 'Settings', 'jcore-ruudukko' ) . '</a>';
 	// Add the link to the end of the array.
 	array_push(
 		$links,

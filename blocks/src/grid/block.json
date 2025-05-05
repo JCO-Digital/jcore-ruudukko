@@ -46,7 +46,7 @@
     },
     "html": false
   },
-  "textdomain": "jcore-grid",
+  "textdomain": "jcore-ruudukko",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css"
 }

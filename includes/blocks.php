@@ -2,10 +2,10 @@
 /**
  * Handles registering the Gutenberg blocks.
  *
- * * @package jcore-grid
+ * * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 /**
  * Handles registering the blocks using the manifest collection file.
@@ -13,8 +13,8 @@ namespace Jcore\Grid;
  * @return void
  */
 function register_blocks_metadata(): void {
-	$base_path = join_path( JCORE_GRID_PLUGIN_PATH, 'blocks/build' );
-	$manifest  = join_path( JCORE_GRID_PLUGIN_PATH, 'blocks/build/blocks-manifest.php' );
+	$base_path = join_path( JCORE_RUUDUKKO_PLUGIN_PATH, 'blocks/build' );
+	$manifest  = join_path( JCORE_RUUDUKKO_PLUGIN_PATH, 'blocks/build/blocks-manifest.php' );
 
 	if ( ! is_readable( $manifest ) ) {
 		return;
@@ -41,7 +41,7 @@ function register_blocks(): void {
 		'column',
 	);
 	foreach ( $blocks as $block ) {
-		$block_file = join_path( JCORE_GRID_PLUGIN_PATH, 'blocks/build', $block, 'block.json' );
+		$block_file = join_path( JCORE_RUUDUKKO_PLUGIN_PATH, 'blocks/build', $block, 'block.json' );
 		if ( is_readable( $block_file ) ) {
 			register_block_type( $block_file );
 		}

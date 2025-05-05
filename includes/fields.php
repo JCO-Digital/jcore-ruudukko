@@ -2,10 +2,10 @@
 /**
  * Generic handlers for different field types.
  *
- * * @package jcore-grid
+ * @package jcore-ruudukko
  */
 
-namespace Jcore\Grid;
+namespace Jcore\Ruudukko;
 
 /**
  * Renders a text field.

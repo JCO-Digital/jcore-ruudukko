@@ -40,7 +40,7 @@ jobs:
       - name: Deploy
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
-          REPO: git@github.com:jco-digital/jcore-grid-dist.git
+          REPO: git@github.com:jco-digital/jcore-ruudukko-dist.git
           BRANCH: main
           FOLDER: plugin
           SSH_PRIVATE_KEY: ${{ secrets.DIST_DEPLOY_KEY }}
