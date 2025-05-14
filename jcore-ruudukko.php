@@ -3,7 +3,7 @@
  * Plugin Name: JCORE Ruudukko
  * Plugin URI: https://github.com/jco-digital/jcore-ruudukko
  * Description: Grid and Flex blocks for layout use in Gutenberg.
- * Version: 0.2.1
+ * Version: 0.2.2
  * Author: J&Co Digital
  * Author URI: https://jco.fi
  * Domain Path: /languages
