@@ -24,7 +24,9 @@
     "scss-admin:watch": "pnpm scss-admin:build --watch",
     "scss-frontend:build": "sass --style=compressed assets/css/index.scss dist/css/index.css",
     "scss-frontend:watch": "pnpm scss-frontend:build --watch",
-    "wp:start": "pnpm dlx @wp-now/wp-now start --blueprint=.wp/latest-debug.json"
+    "wp:start": "pnpm dlx @wp-now/wp-now start --blueprint=.wp/latest-debug.json",
+    "version": "node versionSync.mjs && git add -A",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
