@@ -1,6 +1,6 @@
 {
   "name": "jcore-ruudukko",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Jcore Grid Plugin",
   "main": "index.js",
   "scripts": {
