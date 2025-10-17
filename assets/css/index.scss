@@ -1,22 +1,6 @@
-@import "breakpoints";
-@import "grid";
-@import "flex";
+@use "grid";
+@use "flex";
 
 :root {
   --jcore-column-min: 360px;
-}
-.jflex {
-  display: flex;
-  flex-wrap: wrap;
-  > div {
-    min-width: min(var(--jcore-column-min), 100%);
-    flex-grow: 1;
-  }
-  @for $i from 1 through 6 {
-    &.columns-#{$i} > div {
-      width: calc(100% / $i);
-      min-width: unset;
-      flex-grow: 0;
-    }
-  }
 }

@@ -6,7 +6,7 @@
   "title": "Jcore Grid",
   "category": "widgets",
   "icon": "grid-view",
-  "description": "Jcore Grid",
+  "description": "A grid container block.",
   "attributes": {
     "blockType": {
       "type": "string",

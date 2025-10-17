@@ -9,7 +9,6 @@ import { registerBlockType } from "@wordpress/blocks";
  * Internal dependencies
  */
 import edit from "./edit";
-import variations from "./variations";
 import save from "./save";
 import metadata from "./block.json";
 
@@ -23,11 +22,6 @@ registerBlockType(metadata.name, {
    * @see ./edit.js
    */
   edit,
-
-  /**
-   * @see ./variations.js
-   */
-  variations,
 
   /**
    * @see ./save.js

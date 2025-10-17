@@ -35,6 +35,7 @@
     "@wordpress/components": "^29.1.1",
     "@wordpress/i18n": "^5.16.0",
     "@wordpress/scripts": "^30.8.1",
+    "@jcodigital/jcore-media": "^1.0.1",
     "concurrently": "^9.1.0",
     "esbuild": "^0.24.0",
     "grunt": "~1.6.1",

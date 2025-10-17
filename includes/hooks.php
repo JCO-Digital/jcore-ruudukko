@@ -29,6 +29,11 @@ add_action(
 	__NAMESPACE__ . '\handle_notices'
 );
 
+add_action(
+	'admin_enqueue_scripts',
+	__NAMESPACE__ . '\\enqueue_plugin_admin_assets'
+);
+
 add_filter( 'plugin_action_links_jcore-ruudukko/jcore-ruudukko.php', __NAMESPACE__ . '\settings_link' );
 /**
  * Add settings link to plugin listing.

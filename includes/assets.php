@@ -18,8 +18,17 @@ function register_plugin_assets(): void {
 		'jcore-ruudukko',
 		'dist/css/index.css',
 	);
+	style_register(
+		'jcore-ruudukko-admin',
+		'/dist/css/admin.css'
+	);
 }
 
 function enqueue_plugin_assets(): void {
 	wp_enqueue_style( 'jcore-ruudukko' );
+}
+
+
+function enqueue_plugin_admin_assets(): void {
+	wp_enqueue_style( 'jcore-ruudukko-admin' );
 }
