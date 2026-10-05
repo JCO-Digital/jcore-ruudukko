@@ -1,38 +1,33 @@
-.PHONY: install
+# Thin wrapper over the pnpm scripts. `make ci` is the entry point the shared
+# publish workflow in jcore-update calls; the rest are local shortcuts.
+
+.PHONY: all ci install build i18n check format start playground clean
+
+all: install build i18n
+
+ci: install build i18n
+
 install:
-	@echo "📦 Installing NPM and Composer dependencies"
-	@pnpm install
-	@pnpm composer:install
+	pnpm install
+	composer install --no-dev --no-interaction --prefer-dist
 
-.PHONY: install-release
-install-release:
-	@echo "📦❗ Installing release NPM and Composer dependencies"
-	@pnpm install
-	@pnpm composer:install-release
+build:
+	pnpm build
 
-.PHONY: build
-build: install
-	@echo "🛠️ Building plugin assets"
-	@pnpm project:build
+i18n:
+	pnpm i18n
 
-.PHONY: build-release
-build-release: install-release
-	@echo "🛠️❗ Building a release of the project"
-	@pnpm project:build
+check:
+	pnpm check
 
-.PHONY: release
-release: build-release
-	@echo "✅❗ Bundling a release of the project"
-	@pnpm plugin:tasks
-	@pnpm plugin:zip
-	@pnpm plugin:dist
+format:
+	pnpm format
 
-.PHONY: clean-blocks
-clean-blocks:
-	@echo "Cleaning blocks"
-	@rm -rf blocks/build
+start:
+	pnpm start
 
-.PHONY: dev
-dev: clean-blocks install
-	@echo "▶️ Starting project"
-	@pnpm project:dev
+playground:
+	pnpm playground
+
+clean:
+	rm -rf build node_modules release vendor

@@ -1,0 +1,85 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jcore/grid",
+	"title": "Jcore Grid",
+	"category": "design",
+	"icon": "grid-view",
+	"description": "Lay out columns in a grid or as flex columns, either sized automatically or set per breakpoint.",
+	"keywords": [ "grid", "flex", "columns", "layout", "ruudukko" ],
+	"textdomain": "jcore-ruudukko",
+	"attributes": {
+		"blockType": {
+			"type": "string",
+			"default": "grid"
+		},
+		"autoSize": {
+			"type": "boolean",
+			"default": true
+		},
+		"minSize": {
+			"type": "string",
+			"default": ""
+		},
+		"breakpoints": {
+			"type": "object",
+			"default": {
+				"xs": 1,
+				"md": 2
+			}
+		},
+		"centerRows": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"allowedBlocks": [ "jcore/column" ],
+	"supports": {
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true,
+			"__experimentalSkipSerialization": [ "blockGap" ]
+		},
+		"color": {
+			"background": true,
+			"text": false
+		},
+		"html": false
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "jcore/column",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet."
+						}
+					}
+				]
+			},
+			{
+				"name": "jcore/column",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Consectetur adipiscing elit."
+						}
+					}
+				]
+			}
+		]
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

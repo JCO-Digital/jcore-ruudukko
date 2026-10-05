@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jcore/column",
+	"title": "Jcore Column",
+	"category": "design",
+	"icon": "editor-justify",
+	"description": "A column in a Jcore Grid, spanning one or more grid columns.",
+	"textdomain": "jcore-ruudukko",
+	"parent": [ "jcore/grid" ],
+	"attributes": {
+		"span": {
+			"type": "number",
+			"default": 1
+		},
+		"useBreakpoints": {
+			"type": "boolean",
+			"default": false
+		},
+		"breakpoints": {
+			"type": "object",
+			"default": { "xs": 1, "md": 2 }
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"reusable": false,
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": true,
+			"text": false
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}
