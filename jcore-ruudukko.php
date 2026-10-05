@@ -1,54 +1,54 @@
 <?php
 /**
- * Plugin Name: JCORE Ruudukko
- * Plugin URI: https://github.com/jco-digital/jcore-ruudukko
- * Description: Grid and Flex blocks for layout use in Gutenberg.
- * Version: 0.4.0
- * Author: J&Co Digital
- * Author URI: https://jco.fi
- * Domain Path: /languages
- * Text Domain: jcore-ruudukko
+ * Plugin Name:       JCORE Ruudukko
+ * Plugin URI:        https://github.com/JCO-Digital/jcore-ruudukko
+ * Description:       Grid and flex column blocks for laying out content in the block editor.
+ * Version:           0.4.0
+ * Requires at least: 6.7
+ * Tested up to:      7.1
+ * Requires PHP:      8.2
+ * Author:            J&Co Digital Oy
+ * Author URI:        https://jco.fi
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       jcore-ruudukko
+ * Domain Path:       /languages
  *
- * @package jcore-ruudukko
+ * @package Jcore\Ruudukko
  */
 
 namespace Jcore\Ruudukko;
 
-// Constants for the plugin.
-require_once __DIR__ . '/consts.php';
-
-// Helper functions for the plugin.
-require_once __DIR__ . '/includes/helpers.php';
-
-// Plugin notices.
-require_once __DIR__ . '/includes/notices.php';
-
-// Generic handlers for different field types.
-require_once __DIR__ . '/includes/fields.php';
-
-// Handles registering the plugin styles and scripts.
-require_once __DIR__ . '/includes/assets.php';
-
-// All hooks of the plugin are defined here.
-require_once __DIR__ . '/includes/hooks.php';
-
-// Gutenberg blocks.
-require_once __DIR__ . '/includes/blocks.php';
-
-/**
- * Run when activating the plugin and enabling autoload for specific plugin options.
- *
- * @return void
- */
-function jcore_grid_activate(): void {
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
-register_activation_hook( __FILE__, __NAMESPACE__ . '\jcore_grid_activate' );
 
-/**
- * Run when deactivating the plugin and disabling autoload for specific plugin options.
- *
- * @return void
- */
-function jcore_grid_deactivate(): void {
+define( 'JCORE_RUUDUKKO_VERSION', '0.4.0' );
+define( 'JCORE_RUUDUKKO_FILE', __FILE__ );
+define( 'JCORE_RUUDUKKO_PATH', plugin_dir_path( __FILE__ ) );
+
+// The update library is vendored into the release, but a source checkout has
+// no vendor directory until `composer install` has run.
+if ( is_readable( JCORE_RUUDUKKO_PATH . 'vendor/autoload.php' ) ) {
+	require_once JCORE_RUUDUKKO_PATH . 'vendor/autoload.php';
 }
-register_deactivation_hook( __FILE__, __NAMESPACE__ . '\jcore_grid_deactivate' );
+
+require_once JCORE_RUUDUKKO_PATH . 'includes/class-plugin.php';
+
+add_action(
+	'plugins_loaded',
+	static function (): void {
+		Plugin::instance()->boot();
+	}
+);
+
+// Registered at file scope, not in Plugin::boot(): other JCORE components read
+// this list while plugins are still loading.
+add_filter(
+	'jcore_plugins_loaded',
+	static function ( array $plugins ): array {
+		$plugins['jcore-ruudukko'] = __DIR__;
+
+		return $plugins;
+	}
+);

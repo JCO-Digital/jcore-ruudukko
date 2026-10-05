@@ -1,46 +1,42 @@
-# A set of files you probably don't want in your WordPress.org distribution
-.babelrc
-.deployignore
-.distignore
-.editorconfig
-.eslintignore
-.eslintrc
-.git
-.gitignore
-.github
-.gitlab-ci.yml
-.travis.yml
-.DS_Store
-.*~
-Thumbs.db
-behat.yml
-bitbucket-pipelines.yml
-bin
-versionSync.mjs
-.circleci/config.yml
-composer.json
-composer.lock
-dependencies.yml
-Gruntfile.js
-package.json
-package-lock.json
-phpunit.xml
-phpunit.xml.dist
-multisite.xml
-multisite.xml.dist
-.phpcs.xml
-phpcs.xml
-.phpcs.xml.dist
-phpcs.xml.dist
-README.md
-webpack.config.js
-wp-cli.local.yml
-yarn.lock
-pnpm-lock.yaml
-tests
-node_modules
-*.sql
-*.tar.gz
+# Everything listed here is left out of what ships: the release zip and the
+# dist repository. The reusable publish workflow in jcore-update reads it with
+# rsync --exclude-from, and copies it into the dist repo as its .gitignore,
+# so the paths are anchored the way git anchors them.
+
+# Version control and CI.
+/.git/
+/.github/
+/.gitattributes
+/.gitignore
+
+# Editor and tooling configuration.
+/.editorconfig
+/.idea/
+/.vscode/
+/.wp/
+/.foonver.toml
+/Makefile
+/phpcs.xml.dist
+
+# Sources: compiled into build/, so the originals are not needed at runtime.
+/src/
+/node_modules/
+
+# Dependency manifests: vendor/ is installed with --no-dev before packaging.
+# /composer.json
+/composer.lock
+/package.json
+/pnpm-lock.yaml
+/pnpm-workspace.yaml
+
+# Developer documentation. readme.txt is the one that ships.
+/README.md
+
+# Build artefacts and local noise.
+/release/
+/dist/
 *.zip
-Makefile
-.wp
+*.log
+*~
+.DS_Store
+Thumbs.db

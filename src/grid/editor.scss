@@ -1,0 +1,14 @@
+@use "../shared/editor";
+
+// Editor-only hints. Layout comes from style.scss, which the editor loads too.
+.wp-block-jcore-grid:not(.has-background) {
+	background-color: rgba(100, 100, 100, 0.05);
+}
+
+// The appender renders inside the container; keep it from being laid out as
+// a column.
+.wp-block-jcore-grid:is(.jgrid, .jflex) > .block-list-appender {
+	align-self: center;
+	flex: 0 0 auto;
+	grid-column-end: auto;
+}

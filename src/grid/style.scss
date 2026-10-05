@@ -1,0 +1,143 @@
+@use "sass:map";
+@use "@jcodigital/jcore-media/src/media";
+
+// The shared JCORE breakpoints, so grids switch where the theme does. xs is
+// the base, outside any media query.
+$breakpoints: map.remove(media.$breakpoints, xs);
+
+/*
+ * The classes come from src/shared/utils.js. Each one only sets a custom
+ * property, which the grid and flex layouts below both read:
+ *
+ *   --jcore-columns  column count, from columns-{bp}-{n} on the container
+ *   --jcore-span     columns a child spans, from span-{n} or span-{bp}-{n}
+ *   --jcore-gap      the block's gap setting, inline on the container
+ *
+ * --jcore-columns, --jcore-span and --jcore-gap are reset to `initial` on
+ * every container or child, so a nested grid never picks up its parent's
+ * values.
+ *
+ * A theme sets the defaults in theme.json, under settings.custom.ruudukko:
+ * `gap` and `columnMin`, which WordPress outputs as --wp--custom--ruudukko--gap
+ * and --wp--custom--ruudukko--column-min. Without them the gap falls back to
+ * the theme's block gap, then 1.5rem, and the minimum column width to 360px.
+ */
+
+$max-columns: 6;
+
+// A flex child sized as {span} of {columns} equal columns, gaps included.
+@mixin fixed-columns {
+
+	> * {
+		flex: 0 0 calc((100% - (var(--jcore-columns) - 1) * var(--jcore-gap-size)) / var(--jcore-columns) * var(--jcore-span, 1) + (var(--jcore-span, 1) - 1) * var(--jcore-gap-size));
+		max-width: 100%;
+	}
+}
+
+.jgrid,
+.jflex {
+	--jcore-columns: initial;
+	--jcore-gap-size: var(--jcore-gap, var(--wp--custom--ruudukko--gap, var(--wp--style--block-gap, 1.5rem)));
+	--jcore-auto-min: min(var(--jcore-column-min, var(--wp--custom--ruudukko--column-min, 360px)), 100%);
+
+	gap: var(--jcore-gap-size);
+
+	> * {
+		--jcore-span: initial;
+		--jcore-gap: initial;
+
+		box-sizing: border-box;
+		min-width: 0;
+	}
+
+	@for $i from 1 through $max-columns {
+		&.columns-xs-#{$i} {
+			--jcore-columns: #{$i};
+		}
+
+		@if $i > 1 {
+			> .span-#{$i} {
+				--jcore-span: #{$i};
+			}
+		}
+
+		> .span-xs-#{$i} {
+			--jcore-span: #{$i};
+		}
+	}
+
+	@each $bp, $width in $breakpoints {
+
+		@media (min-width: $width) {
+
+			@for $i from 1 through $max-columns {
+				&.columns-#{$bp}-#{$i} {
+					--jcore-columns: #{$i};
+				}
+
+				> .span-#{$bp}-#{$i} {
+					--jcore-span: #{$i};
+				}
+			}
+		}
+	}
+}
+
+// Grid: as many columns as fit, until a breakpoint sets a count.
+.jgrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--jcore-auto-min), 1fr));
+
+	> * {
+		grid-column-end: span var(--jcore-span, 1);
+
+		// A span wider than the grid would add implicit tracks and squeeze the
+		// next column, e.g. a span-2 column in a one-column phone layout.
+		@supports (grid-column-end: span min(2, 1)) {
+			grid-column-end: span min(var(--jcore-span, 1), var(--jcore-columns, #{$max-columns}));
+		}
+	}
+
+	&[class*="columns-xs-"] {
+		grid-template-columns: repeat(var(--jcore-columns), minmax(0, 1fr));
+	}
+
+	@each $bp, $width in $breakpoints {
+
+		@media (min-width: $width) {
+			&[class*="columns-#{$bp}-"] {
+				grid-template-columns: repeat(var(--jcore-columns), minmax(0, 1fr));
+			}
+		}
+	}
+}
+
+// Flex: children grow from the minimum width, until a breakpoint sets a
+// count. Unlike the grid, an incomplete last row can be centred.
+.jflex {
+	display: flex;
+	flex-wrap: wrap;
+
+	&.jflex-center {
+		justify-content: center;
+	}
+
+	> * {
+		flex: var(--jcore-span, 1) 1 calc(var(--jcore-auto-min) * var(--jcore-span, 1));
+	}
+
+	&[class*="columns-xs-"] {
+
+		@include fixed-columns;
+	}
+
+	@each $bp, $width in $breakpoints {
+
+		@media (min-width: $width) {
+			&[class*="columns-#{$bp}-"] {
+
+				@include fixed-columns;
+			}
+		}
+	}
+}
