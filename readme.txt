@@ -4,7 +4,7 @@ Tags: blocks, grid, columns, layout
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.4.0
+Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,44 @@ Grids now have a gap by default (the theme's block gap), and grid columns are si
 
 == Changelog ==
 
-= 0.4.0 =
+= 1.0.0 (2026-10-05) =
 
-* Refactor: use min-width for media queries
+* Feature: rename to jcodigital/jcore-ruudukko and move to the jcore-update release workflow (BREAKING CHANGE)
+
+= v0.4.0 (2025-10-17) =
+
+* Refactor: Use min-width for media queries
+
+= v0.3.0 (2025-05-16) =
+
+* Feature: update package namespace
+
+= v0.2.3 (2025-05-14) =
+
+* Build: Try to fix build process.
+
+= v0.2.2 (2025-05-14) =
+
+* CI: push only on tag
+
+= v0.2.1 (2025-05-14) =
+
+* Build: add versionSync script and tags as github action trigger.
+
+= v0.2.0 (2025-05-14) =
+
+* Feature: Renamed plugin to jcore-ruudukko
+* Fix: cleanup
+* Fix: remove autoloader (not needed)
+
+= v0.1.1 (2025-02-24) =
+
+* Feature: basic block funtions work now.
+* Feature: Breakponit editor.
+* Feature: added breakpoints
+* Feature: Added styling options to the blocks and added a front-end style sheet for development.
+* Fix: readme cleanup
+* Fix: placeholder js
+* Fix: release should work now
+* CI: added guthub action
+* Add all files

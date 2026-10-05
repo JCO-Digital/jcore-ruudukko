@@ -3,7 +3,7 @@
  * Plugin Name:       JCORE Ruudukko
  * Plugin URI:        https://github.com/JCO-Digital/jcore-ruudukko
  * Description:       Grid and flex column blocks for laying out content in the block editor.
- * Version:           0.4.0
+ * Version:           1.0.0
  * Requires at least: 6.7
  * Tested up to:      7.1
  * Requires PHP:      8.2
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'JCORE_RUUDUKKO_VERSION', '0.4.0' );
+define( 'JCORE_RUUDUKKO_VERSION', '1.0.0' );
 define( 'JCORE_RUUDUKKO_FILE', __FILE__ );
 define( 'JCORE_RUUDUKKO_PATH', plugin_dir_path( __FILE__ ) );
 

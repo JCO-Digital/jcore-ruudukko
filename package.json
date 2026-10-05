@@ -1,6 +1,6 @@
 {
   "name": "jcore-ruudukko",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Grid and flex column blocks for laying out content in the block editor.",
   "author": "J&Co Digital Oy <support@jco.fi>",
   "license": "GPL-2.0-or-later",
