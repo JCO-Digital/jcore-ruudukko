@@ -4,7 +4,7 @@ Tags: blocks, grid, columns, layout
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,7 +71,11 @@ Grids now have a gap by default (the theme's block gap), and grid columns are si
 
 == Changelog ==
 
-= 1.0.0 (2026-10-05) =
+= 1.0.1 (2026-11-02) =
+
+* CI: release - keep publishing to the dist repo
+
+= v1.0.0 (2026-10-05) =
 
 * Feature: rename to jcodigital/jcore-ruudukko and move to the jcore-update release workflow (BREAKING CHANGE)
 
